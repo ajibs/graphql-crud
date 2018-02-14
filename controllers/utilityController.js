@@ -6,7 +6,7 @@ const seedDB = async (req, res) => {
     address: 'lagos, nigeria',
     website: 'https://domain.com',
     email: 'hello@domain.com',
-    phone: '+23412345678'
+    phone: '+23412345678',
   };
   const companies = [
     { name: 'konga', description: 'buy anything online' },
@@ -16,7 +16,7 @@ const seedDB = async (req, res) => {
     { name: 'jumia', description: 'best online shopping' },
     { name: 'flutterwave', description: 'powerful payments apis' },
     { name: 'hotels.ng', description: 'book hotels in nigeria' },
-    { name: 'booking.com', description: 'largest hotel booking website' }
+    { name: 'booking.com', description: 'largest hotel booking website' },
   ];
 
   const demo = await companies.map(company => Object.assign({}, baseData, company));

@@ -11,7 +11,7 @@ const getAllListings = async () => {
 const getSingleListing = async (_id) => {
   const listing = await Business.find({ _id });
   if (!listing) {
-    return null;
+    return 'listing does not exist';
   }
   return listing;
 };
@@ -21,4 +21,22 @@ const addNewListing = async (args) => {
   return listing;
 };
 
-export { getAllListings, getSingleListing, addNewListing };
+const updateListing = async (args) => {
+  const listing = await Business.findOneAndUpdate(
+    { _id: args._id }, // eslint-disable-line no-underscore-dangle
+    args,
+    {
+      new: true,
+      runValidators: true,
+    },
+  );
+
+  return listing;
+};
+
+export {
+  getAllListings,
+  getSingleListing,
+  addNewListing,
+  updateListing,
+};

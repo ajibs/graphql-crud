@@ -3,7 +3,7 @@ import {
   GraphQLObjectType,
   GraphQLNonNull,
 } from 'graphql';
-import { addNewListing } from '../../controllers/listingController';
+import { addNewListing, updateListing } from '../../controllers/listingController';
 import { ListingType } from '../types/rootTypes';
 
 
@@ -24,6 +24,17 @@ const ListingMutationRootType = new GraphQLObjectType({
       },
       resolve(parentValue, args) {
         return addNewListing(args);
+      },
+    },
+    updateListing: {
+      type: ListingType,
+      description: 'update an existing listing',
+      args: {
+        _id: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parentValue, args) {
+        return updateListing(args);
       },
     },
   }),

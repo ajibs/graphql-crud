@@ -46,10 +46,10 @@ const ListingQueryRootType = new GraphQLObjectType({
       type: GraphQLList(ListingType),
       description: 'Get a single listing',
       args: {
-        id: { type: GraphQLString },
+        _id: { type: GraphQLString },
       },
       resolve(parentValue, args) {
-        return getSingleListing(args.id);
+        return getSingleListing(args._id); // esLint-disable-line
       },
     },
   }),
