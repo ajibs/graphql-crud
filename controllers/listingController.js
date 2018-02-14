@@ -25,3 +25,16 @@ exports.getAllListings = async () => {
   return listings;
 };
 
+exports.getSingleListing = async (_id) => {
+  const listing = await Business.find({ _id });
+  if (!listing) {
+    return null;
+  }
+  return listing;
+};
+
+exports.addNewListing = async (args) => {
+  const listing = await (new Business(args)).save();
+  return listing;
+};
+
