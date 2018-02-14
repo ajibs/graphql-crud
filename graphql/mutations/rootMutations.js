@@ -2,6 +2,7 @@ import {
   GraphQLString,
   GraphQLObjectType,
   GraphQLNonNull,
+  GraphQLList,
 } from 'graphql';
 import {
   addNewListing,
@@ -9,7 +10,7 @@ import {
   deleteListing,
 } from '../../controllers/listingController';
 import { ListingType } from '../types/rootTypes';
-
+import seedDB from '../../controllers/utilityController';
 
 const ListingMutationRootType = new GraphQLObjectType({
   name: 'ListingMutation',
@@ -49,6 +50,13 @@ const ListingMutationRootType = new GraphQLObjectType({
       },
       resolve(parentValue, args) {
         return deleteListing(args);
+      },
+    },
+    seedDatabase: {
+      type: GraphQLList(ListingType),
+      description: 'seed the database with initial values',
+      resolve() {
+        return seedDB();
       },
     },
   }),

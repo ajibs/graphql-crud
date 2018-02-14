@@ -1,7 +1,7 @@
 import Business from '../models/Business';
 
 // create demo data
-const seedDB = async (req, res) => {
+const seedDB = async () => {
   const baseData = {
     address: 'lagos, nigeria',
     website: 'https://domain.com',
@@ -27,7 +27,7 @@ const seedDB = async (req, res) => {
     });
   });
 
-  res.json({ demo });
+  return demo;
 };
 
 export default seedDB;

@@ -49,4 +49,13 @@ mutation{
   }
 }
 
+// --- Seed Database
+mutation{
+  seedDatabase{
+    name
+    address
+    description
+  }
+}
+
 */
