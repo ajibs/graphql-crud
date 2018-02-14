@@ -1,10 +1,10 @@
 {
   "name": "graphql-crud",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "start.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./start.js --exec babel-node"
+    "start": "nodemon ./start.js --exec babel-node"
   },
   "engines": {
     "node": "8.9.4"
