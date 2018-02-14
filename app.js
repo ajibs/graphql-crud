@@ -1,7 +1,6 @@
-const express = require('express');
-const graphqlHTTP = require('express-graphql');
-
-const schema = require('./graphql/schema');
+import express from 'express';
+import graphqlHTTP from 'express-graphql';
+import schema from './graphql/schema';
 
 const app = express();
 app.use('/', graphqlHTTP({
@@ -9,4 +8,4 @@ app.use('/', graphqlHTTP({
   graphiql: true,
 }));
 
-module.exports = app;
+export default app;

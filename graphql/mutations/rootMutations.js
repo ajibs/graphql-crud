@@ -1,10 +1,11 @@
-const listingController = require('../../controllers/listingController');
-const { ListingType } = require('../types/rootTypes');
-const {
+import {
   GraphQLString,
   GraphQLObjectType,
   GraphQLNonNull,
-} = require('graphql');
+} from 'graphql';
+import { addNewListing } from '../../controllers/listingController';
+import { ListingType } from '../types/rootTypes';
+
 
 const ListingMutationRootType = new GraphQLObjectType({
   name: 'ListingMutation',
@@ -22,10 +23,10 @@ const ListingMutationRootType = new GraphQLObjectType({
         phone: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve(parentValue, args) {
-        return listingController.addNewListing(args);
+        return addNewListing(args);
       },
     },
   }),
 });
 
-module.exports = ListingMutationRootType;
+export default ListingMutationRootType;

@@ -1,7 +1,7 @@
-const Business = require('../models/Business');
+import Business from '../models/Business';
 
 // create demo data
-exports.seedDB = async (req, res) => {
+const seedDB = async (req, res) => {
   const baseData = {
     address: 'lagos, nigeria',
     website: 'https://domain.com',
@@ -29,3 +29,5 @@ exports.seedDB = async (req, res) => {
 
   res.json({ demo });
 };
+
+export default seedDB;

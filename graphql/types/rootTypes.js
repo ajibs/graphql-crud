@@ -1,11 +1,12 @@
-const _ = require('lodash');
-const Authors = require('../data/authors');
-
-const {
+import {
   GraphQLString,
   GraphQLObjectType,
   GraphQLNonNull,
-} = require('graphql');
+} from 'graphql';
+
+import _ from 'lodash';
+import Authors from '../data/authors';
+
 
 const AuthorType = new GraphQLObjectType({
   name: 'Author',
@@ -27,7 +28,7 @@ const PostType = new GraphQLObjectType({
     author: {
       type: AuthorType,
       resolve(post) {
-        return _.find(Authors, a => a.id == post.author_id);
+        return _.find(Authors, a => a.id === post.author_id);
       },
     },
   }),
@@ -47,4 +48,4 @@ const ListingType = new GraphQLObjectType({
   }),
 });
 
-module.exports = { AuthorType, PostType, ListingType };
+export { AuthorType, PostType, ListingType };

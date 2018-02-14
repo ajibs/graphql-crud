@@ -1,23 +1,6 @@
-/* const Business = require('../models/Business');
+import Business from '../models/Business';
 
-exports.getAllListings = async (req, res) => {
-  const listings = await Business.find({})
-    .sort({ created: 'desc' })
-    .limit(6);
-  return listings;
-  // res.json({
-    // status: 200,
-    // listings
-  // });
-};
-*/
-
-// End of REST
-
-// beginning of GraphQL
-const Business = require('../models/Business');
-
-exports.getAllListings = async () => {
+const getAllListings = async () => {
   const listings = await Business.find({})
     .sort({ created: 'desc' })
     .limit(6);
@@ -25,7 +8,7 @@ exports.getAllListings = async () => {
   return listings;
 };
 
-exports.getSingleListing = async (_id) => {
+const getSingleListing = async (_id) => {
   const listing = await Business.find({ _id });
   if (!listing) {
     return null;
@@ -33,8 +16,9 @@ exports.getSingleListing = async (_id) => {
   return listing;
 };
 
-exports.addNewListing = async (args) => {
+const addNewListing = async (args) => {
   const listing = await (new Business(args)).save();
   return listing;
 };
 
+export { getAllListings, getSingleListing, addNewListing };

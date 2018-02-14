@@ -1,16 +1,21 @@
-const listingController = require('../../controllers/listingController');
-const Authors = require('../data/authors');
-const Posts = require('../data/posts');
-const {
-  AuthorType,
-  PostType,
-  ListingType,
-} = require('../types/rootTypes');
-const {
+import {
   GraphQLString,
   GraphQLList,
   GraphQLObjectType,
-} = require('graphql');
+} from 'graphql';
+import {
+  getAllListings,
+  getSingleListing,
+} from '../../controllers/listingController';
+
+import {
+  AuthorType,
+  PostType,
+  ListingType,
+} from '../types/rootTypes';
+import Authors from '../data/authors';
+import Posts from '../data/posts';
+
 
 const ListingQueryRootType = new GraphQLObjectType({
   name: 'ListingQuery',
@@ -34,7 +39,7 @@ const ListingQueryRootType = new GraphQLObjectType({
       type: GraphQLList(ListingType),
       description: 'Get recent business listings',
       resolve() {
-        return listingController.getAllListings();
+        return getAllListings();
       },
     },
     singleListing: {
@@ -44,10 +49,10 @@ const ListingQueryRootType = new GraphQLObjectType({
         id: { type: GraphQLString },
       },
       resolve(parentValue, args) {
-        return listingController.getSingleListing(args.id);
+        return getSingleListing(args.id);
       },
     },
   }),
 });
 
-module.exports = ListingQueryRootType;
+export default ListingQueryRootType;
