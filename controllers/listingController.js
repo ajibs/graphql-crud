@@ -34,9 +34,14 @@ const updateListing = async (args) => {
   return listing;
 };
 
+const deleteListing = async (args) => {
+  await Business.deleteOne({ _id: args._id }); // eslint-disable-line no-underscore-dangle
+};
+
 export {
   getAllListings,
   getSingleListing,
   addNewListing,
   updateListing,
+  deleteListing,
 };

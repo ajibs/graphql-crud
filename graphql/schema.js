@@ -26,6 +26,13 @@ mutation{
   }
 }
 
+// --- Delete Listing
+mutation{
+  deleteListing(_id:"5a84054385d8c93468d89e15"){
+    name
+  }
+}
+
 // --- Single Listing
 {
   singleListing(_id:"5a84054385d8c93468d89e13"){
@@ -41,9 +48,5 @@ mutation{
     _id
   }
 }
-
-5a84240a6884f21cf82c95ee
-5a84054385d8c93468d89e15
-5a84052d85d8c93468d89e13
 
 */
