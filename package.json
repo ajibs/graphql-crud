@@ -9,9 +9,6 @@
     "node": "8.9.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
     "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
@@ -24,6 +21,9 @@
     "graphql": "^0.13.0",
     "lodash": "^4.17.5",
     "mongoose": "^5.0.4",
-    "nodemon": "^1.14.12"
+    "nodemon": "^1.14.12",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
   }
 }
