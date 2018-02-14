@@ -1,5 +1,5 @@
 # GraphQL CRUD
-CRUD API built with Node, GraphQL and Mongo for database
+CRUD API built with GraphQL, Node and Mongo for database
 
 
 ## Feature List
