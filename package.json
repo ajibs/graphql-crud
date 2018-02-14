@@ -1,7 +1,6 @@
 {
   "name": "graphql-crud",
   "version": "1.0.0",
-  "main": "start.js",
   "license": "MIT",
   "scripts": {
     "start": "nodemon ./start.js --exec babel-node"

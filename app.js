@@ -4,9 +4,7 @@ import schema from './graphql/schema';
 
 const app = express();
 
-app.use('/', (req, res) => res.send('hello world'));
-
-app.use('/graphql', graphqlHTTP({
+app.use('/', graphqlHTTP({
   schema,
   graphiql: true,
 }));
