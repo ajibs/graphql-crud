@@ -3,23 +3,23 @@ CRUD API built with GraphQL, Node and Mongo for database
 
 
 ## Feature List
-* Seed Database
 * View a single listing
 * View most recent listings
-* Create listing with `name, address, description, website, email and phone`.
-* Update Listing.
+* Create listing with `name, address, description, website, email and phone`
+* Update Listing
 * Delete listing
+* Seed Database
+
 
 ## Getting Started
-### GraphiQL
 Open up a browser and visit
 ```bash
 https://graphql-crud-mongo.herokuapp.com/graphql
 ```
 
-Send any of the following queries via the GraphiQL window:
+Send any of the following requests via the GraphiQL window:
 
-### CREATE New Listing
+### Example GraphQL Query to CREATE New Listing
 ```bash
   mutation{
     addListing(name:"Bolu Ventures", address: "ajibawo house, ibadan", description:"techie things", website:"http://boluajibawo.xyz", email:"bolu@yahoo.com", phone:"+23457927938"){
@@ -31,23 +31,75 @@ Send any of the following queries via the GraphiQL window:
   }
 ```
 
+### Example Response to CREATE New Listing
+```bash
+  {
+    "data": {
+      "addListing": {
+        "_id": "5a859392b5e4d40014e96591",
+        "name": "Bolu Ventures",
+        "description": "techie things",
+        "address": "ajibawo house, ibadan"
+      }
+    }
+  }
+```
 
-### VIEW Recent Listings:
-  ```bash
+
+### Example GraphQL Query to VIEW Recent Listings:
+```bash
   {
     recentListings{
-      address
       name
       description
-      website
       _id
     }
   }
-  ```
+```
+
+### Example Response to VIEW Recent Listings
+```bash
+  {
+    "data": {
+      "recentListings": [
+        {
+          "name": "Bolu Ventures",
+          "description": "techie things",
+          "_id": "5a859392b5e4d40014e96591"
+        },
+        {
+          "name": "booking.com",
+          "description": "largest hotel booking website",
+          "_id": "5a844e76e65f591b984f6b3c"
+        },
+        {
+          "name": "hotels.ng",
+          "description": "book hotels in nigeria",
+          "_id": "5a844e76e65f591b984f6b3b"
+        },
+        {
+          "name": "flutterwave",
+          "description": "powerful payments apis",
+          "_id": "5a844e76e65f591b984f6b3a"
+        },
+        {
+          "name": "jumia",
+          "description": "best online shopping",
+          "_id": "5a844e76e65f591b984f6b39"
+        },
+        {
+          "name": "andela",
+          "description": "training world class developers",
+          "_id": "5a844e76e65f591b984f6b38"
+        }
+      ]
+    }
+  }
+```
 
 
-### VIEW Single Listing:
-  ```bash
+### Example GraphQL Query to VIEW Single Listing:
+```bash
   {
     singleListing(_id:"5a844e76e65f591b984f6b3c"){
       _id
@@ -56,26 +108,66 @@ Send any of the following queries via the GraphiQL window:
       phone
     }
   }
-  ```
+```
 
-### UPDATE Listing:
-  ```bash
+### Example Response to VIEW Single Listing:
+```bash
+  {
+    "data": {
+      "singleListing": [
+        {
+          "_id": "5a844e76e65f591b984f6b3c",
+          "name": "booking.com",
+          "email": "hello@domain.com",
+          "phone": "+23412345678"
+        }
+      ]
+    }
+  }
+```
+
+
+### Example GraphQL Query to UPDATE Listing:
+```bash
   mutation{
-    updateListing(_id:"5a844e76e65f591b984f6b3c", name:"Seyi Law Slayers"){
+    updateListing(_id:"5a844e76e65f591b984f6b3c", name:"Black Panther"){
       _id,
       name
     }
   }
-  ```
+```
 
-### DELETE Listing:
-  ```bash
+### Example Response to UPDATE Listing:
+```bash
+  {
+    "data": {
+      "updateListing": {
+        "_id": "5a844e76e65f591b984f6b3c",
+        "name": "Black Panther"
+      }
+    }
+  }
+```
+
+
+### Example GraphQL Query to DELETE Listing:
+```bash
   mutation{
     deleteListing(_id:"5a844e76e65f591b984f6b39"){
       name
     }
   }
-  ```
+```
+
+### Example Response to DELETE Listing:
+```bash
+  {
+    "data": {
+      "deleteListing": null
+    }
+  }
+```
+
 
 
 ## Setup
@@ -126,19 +218,28 @@ Open up a browser and visit
   http://localhost:5000/graphql
 ```
 
-You can send any of the queries previously mentioned above.
+You can send any of the requests previously mentioned above.
 
 You can also seed your database with the following command:
-### SEED Database:
-  ```bash
+### Example Query to SEED Database:
+```bash
   mutation{
     seedDatabase{
       name
       description
     }
   }
-  ```
+```
 
+## Production
+To build and serve the app for production, run the following in your terminal:
+```bash
+npm run build
+```
+Then:
+```bash
+npm run start
+```
 
 ## Built With
 - [Git](https://git-scm.com/) - Version Control
